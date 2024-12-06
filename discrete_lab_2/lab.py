@@ -169,32 +169,6 @@ def iterative_adjacency_matrix_bfs(graph: list[list[int]], start: int) ->list[in
     pass
 
 
-def recursive_adjacency_dict_bfs(graph: dict[int, list[int]], start: int) -> list[int]:
-    """
-    :param list[list] graph: the adjacency list of a given graph
-    :param int start: start vertex of search
-    :returns list[int]: the bfs traversal of the graph
-    >>> recursive_adjacency_dict_bfs({0: [1, 2], 1: [0, 2], 2: [0, 1]}, 0)
-    [0, 1, 2]
-    >>> recursive_adjacency_dict_bfs({0: [1, 2], 1: [0, 2, 3], 2: [0, 1], 3: []}, 0)
-    [0, 1, 2, 3]
-    """
-    pass
-
-
-def recursive_adjacency_matrix_bfs(graph: list[list[int]], start: int) ->list[int]:
-    """
-    :param dict graph: the adjacency matrix of a given graph
-    :param int start: start vertex of search
-    :returns list[int]: the bfs traversal of the graph
-    >>> recursive_adjacency_matrix_bfs([[0, 1, 1], [1, 0, 1], [1, 1, 0]], 0)
-    [0, 1, 2]
-    >>> recursive_adjacency_matrix_bfs([[0, 1, 1, 0], [1, 0, 1, 1], [1, 1, 0, 0], [0, 0, 0, 0]], 0)
-    [0, 1, 2, 3]
-    """
-
-
-
 def adjacency_matrix_radius(graph: list[list]) -> int:
     """
     :param list[list] graph: the adjacency matrix of a given graph
