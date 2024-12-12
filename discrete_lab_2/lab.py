@@ -178,6 +178,29 @@ def adjacency_matrix_radius(graph: list[list]) -> int:
     >>> adjacency_matrix_radius([[0, 1, 1], [1, 0, 1], [1, 1, 0], [0, 1, 0]])
     2
     """
+    def bfs_matrix(start):
+        n = len(graph)
+        visited = [False] * n
+        outp = [None] * n
+        queue = [start]
+        outp[start] = 0
+        visited[start] = True
+
+        while len(queue) > 0:
+            curr = queue.pop(0)
+            for idx, adjacent in enumerate(graph[curr]):
+                if adjacent and not visited[idx]:
+                    visited[idx] = True
+                    outp[idx] = outp[curr] + 1
+                    queue.append(idx)
+        if any(dist is None for dist in outp):
+            return float('inf')
+        return max(outp)
+
+    outp = [bfs_matrix(i) for i in range(len(graph))]
+
+    return min(outp)
+
 
 
 def adjacency_dict_radius(graph: dict[int: list[int]]) -> int:
@@ -189,10 +212,29 @@ def adjacency_dict_radius(graph: dict[int: list[int]]) -> int:
     >>> adjacency_dict_radius({0: [1, 2], 1: [0, 2], 2: [0, 1], 3: [1]})
     2
     """
-    outp = []
-    vertices = graph.items()
-    
+    def bfs_dict(start):
+        n = len(graph)
+        visited = {key: False for key in graph}
+        outp = {key: None for key in graph}
+        queue = [start]
+        outp[start] = 0
+        visited[start] = True
 
+        while queue:
+            curr = queue.pop(0)
+            for el in graph[curr]:
+                if not visited[el]:
+                    visited[el] = True
+                    outp[el] = outp[curr] + 1
+                    queue.append(el)
+        if any(dist is None for dist in outp):
+            return float('inf')
+
+        return max(outp.values())
+    
+    outp = [bfs_dict(i) for i in range(len(graph))]
+
+    return min(outp)
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
