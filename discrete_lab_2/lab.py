@@ -227,7 +227,7 @@ def adjacency_dict_radius(graph: dict[int: list[int]]) -> int:
                     visited[el] = True
                     outp[el] = outp[curr] + 1
                     queue.append(el)
-        if any(dist is None for dist in outp):
+        if any(outp[vertex] == None for vertex in graph):
             return float('inf')
 
         return max(outp.values())
