@@ -185,7 +185,7 @@ def iterative_adjacency_dict_bfs(graph: dict[int, list[int]], start: int) -> lis
         if vertex not in visited:
             visited.add(vertex)
             traversal.append(vertex)
-            for neighbor in sorted(graph[vertex]):
+            for neighbor in graph[vertex]:
                 if neighbor not in visited:
                     queue.append(neighbor)
 
@@ -248,7 +248,6 @@ def adjacency_matrix_radius(graph: list[list]) -> int:
     outp = [bfs_matrix(i) for i in range(len(graph))]
 
     return min(outp)
-
 
 
 def adjacency_dict_radius(graph: dict[int: list[int]]) -> int:
